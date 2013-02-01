@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<script type="text/javascript" src="jquery-1.7.1.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(e) {
+    $("#nota").blur(function(e) {
+        GuardaNota();
+    });
+	$(window).unload(function(e) {
+        GuardaNota();
+    });
+});
+function GuardaNota()
+{
+	var text = $('textarea#nota').val();
+	
+	
+	
+	$.post('notas.php',{nota:text},function(data){
+		data=JSON.parse(data);
+		if(!data.success)
+		{
+			setTimeout(function(){
+				GuardaNota();
+			},5000);
+		}
+	});
+}
+</script>
+</head>
+
+<body style="font-family:Sans-Serif,Arial,Helvetica">
+
+<div style="background-image:url(notes.png);width:210px;height:234px">  
+	<textarea name="nota" rows="9" cols="22" style="border:0px;border-style:none;background-color:transparent;padding:35px 10px 0 10px;text-align:left;resize:none;font-family:Sans-Serif,Arial,Helvetica"></textarea>
+</div>
+</body>
+</html>

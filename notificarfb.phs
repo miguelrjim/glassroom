@@ -1,0 +1,41 @@
+<?php
+/* argv[1] = curso, argv[2] = tipo, argv[3] = autor, argv[4] = autor_id */
+if($argc != 5) exit(1);
+require_once('condb.php');
+require_once('AppInfo.php');
+require_once('utils.php');
+require_once('sdk/src/facebook.php');
+$facebook = new Facebook(array(
+  'appId'  => AppInfo::appID(),
+  'secret' => AppInfo::appSecret(),
+));
+$mensaje = $argv[3] . ($argv[2] == 1 ? ' ha publicado una nota urgente en la plataforma' : ($argv[2] == 2 ? ' ha publicado una nueva tarea en la plataforma' : ' ha publicado un anuncio en la plataforma'));
+$fbs=$db->query("SELECT a.Facebook FROM usuarios AS a INNER JOIN usuarios_materias AS b ON a.ID=b.ID_Usuario AND b.ID_Curso={$argv[1]} WHERE a.Facebook IS NOT NULL AND a.ID != {$argv[4]}");
+while($fb=$fbs->fetch_assoc())
+	notificarfb($fb['Facebook'], $mensaje, $facebook);
+function notificarfb($uid, $status, $facebook)
+{
+	$permissions = $facebook->api('/'.$uid.'/permissions');
+	if(array_key_exists('publish_stream', $permissions['data'][0]) && !array_key_exists('offline_access', $permissions['data'][0]))
+	{
+		$attachment = array(
+			'message' => $status,
+			'type' => 'status',
+			'privacy' => array(
+				'value' => 'CUSTOM',
+				'friends' => 'SELF'
+			)
+		);
+		try
+		{
+			$facebook->api('/'.$uid.'/feed/','POST',$attachment);
+			return true;
+		}
+		catch (FacebookApiException $e)
+		{
+			return false;
+		}
+	}
+}
+require_once('cerdb.php');
+?>

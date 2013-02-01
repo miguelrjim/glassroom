@@ -1,0 +1,82 @@
+@charset "utf-8";
+/* CSS Document */
+*{margin:0px; padding:0px;}
+
+body{ font-family:Sans-serif;}
+
+#head{
+	height:60px;
+	background-color:#EBF6FB;
+	background: -o-linear-gradient(top, #F6F9FB, #EBF6FB);
+    background: -moz-linear-gradient(center top,#F6F9FB,#EBF6FB) repeat scroll 0 0 transparent; /*Mozilla Firefoz*/
+	background: -webkit-gradient(linear, center top, center bottom, from(#F6F9FB), to(#EBF6FB)); /* for webkit browsers */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F6F9FB', endColorstr='#EBF6FB');
+	}
+#headcontain{margin:0px auto 0px auto; width:960px; padding:10px 10px;}
+#headleft {float:left;}
+#headright {float:right;}
+#headright p{ text-align:right; font-size:20px; font-weight:bold; color:#666; padding-top:5px;}
+/*Navegacion*/
+ul.menu{ list-style:none;}
+ul.menu li{ padding:10px 10px; color:#999; font-size:14px; display:inline-block;}
+ul.menu li a{color:#999; text-decoration:none; }
+ul.menu li a:hover{color:#666; }
+ul.menu li a.sel{color:#333;}
+/*Navegacion*/
+#content{
+	margin:0px auto 0px auto; width:970px;
+	}
+.video{width:750px; margin:75px auto 75px auto;background-color:#666; height:400px;}	
+
+/*Contenido alumno*/
+.contenidoalumno{width:970px; margin:20px auto 0px auto;}
+.contenidoalumno p{font-size:12px; color:#333;}
+.columnaizq, .columnader, .columnacentro {display:inline-block; text-align:center; vertical-align:top;}
+.columnaizq{width:200px; text-align:left; margin-top:20px;}
+.columnacentro{width:540px; margin-right:10px; }
+.columnader{width:210px;margin-left:0px;margin-top:20px;}
+.foto{width:235px;}
+/*Contenido alumno*/
+div.materias{background-color:#EBF6FB;height:500px;-moz-border-radius:10px;-webkit-border-radius:10px;}
+/*menu materias*/
+ul.menumat{ list-style:none;}
+ul.menumat li { display:inline-block;;}
+ul.menumat li a{padding:5px 10px 1px 10px; color:#999; 
+font-size:14px;color:#FFF;
+text-decoration:none;
+border-top-left-radius:5px;
+border-top-right-radius:5px;
+background-color:#42B9D3}
+ul.menumat li a:hover{color:#666;background-color:#EBF6FB; color:#999;}
+ul.menumat li a.sel{color:#333;background-color:#EBF6FB;}
+div.materiain{width:520px; padding:0px 0px 0px 0px; background-color:#FFF; margin:0px auto 0px auto;border-radius:10px;height:200px;}
+/*menu dash y vault*/
+ul.menudash{ list-style:none;color:#999;padding:10px 0px;}
+ul.menudash li {display:inline-block; color:#999;}
+ul.menudash li a{padding:5px 10px 1px 10px;color:#999;font-size:12px;text-decoration:none;}
+ul.menudash li a:hover{color:#666;}
+ul.menudash li a.sel{color:#333;background-color:#EBF6FB; height:200px;}
+
+
+
+/*Chat*/
+div.chat{}
+
+
+
+#foot{margin:0px auto 0px auto; width:960px; padding:10px 0px;
+}
+#foot p {font-size:16px; color:#999;}
+#vault { display:none; }
+.urgente,.tarea,.anuncio { text-align:left; position:relative; margin:5px 0; width:100%; display:inline-block; }	
+.boton { padding:3px 15px;background-color:#00CC66; display:inline-block}
+.texto { width:400px;height:200px;resize:none; }
+.urgente { border-top:2px solid #F00; border-bottom:2px solid #F00; }
+.tarea { border-top:2px solid #6FCDD5; border-bottom:2px solid #6FCDD5; }
+.anuncio { border-top:2px solid #E6E7E8; border-bottom:2px solid #E6E7E8; }
+.autor_foto { float:left; width:100px; margin:10px; }
+.subir { background-color:#0066CC; padding:3px 15px; cursor:pointer; display:block; color:#FFF; width:100px; text-align:center; clear:both; }
+.fechaEnt { position:absolute; bottom:0; right:0; margin:5px; }
+.autor { position:absolute; top:0; right:0; margin:5px; }
+.titulo { margin-top:10px; }
+.descripcion { margin-top:10px; margin-bottom:25px; }
